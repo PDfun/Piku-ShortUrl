@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Piku — shrink any link</title>
+  <meta name="description" content="Piku turns long, ugly URLs into short ones you can actually share. Free, fast, and open for everyone.">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <img src="/assets/logo.svg" alt="Piku" class="logo">
+      <span class="header-tag">free &amp; open for everyone</span>
+    </header>
+
+    <section class="hero">
+      <h1>Shrink any link<span class="accent">.</span></h1>
+      <p>Paste a long, unwieldy URL. Get back something small enough to actually say out loud.</p>
+    </section>
+
+    <form id="shorten-form" class="card" novalidate>
+      <div class="field-row" id="field-row">
+        <input
+          type="url"
+          id="long-url"
+          name="url"
+          placeholder="https://example.com/a/very/long/link/that/needs/help"
+          autocomplete="off"
+          required
+        >
+        <button type="submit" class="btn btn-primary" id="submit-btn">Shrink →</button>
+      </div>
+
+      <div class="alias-row">
+        <div class="seg" role="group" aria-label="Link code type">
+          <button type="button" id="seg-random" class="active" aria-pressed="true">Random code</button>
+          <button type="button" id="seg-custom" aria-pressed="false">Custom alias</button>
+        </div>
+        <label class="alias-input-wrap" id="alias-input-wrap" for="alias">
+          <span id="alias-prefix"></span>
+          <input type="text" id="alias" name="alias" placeholder="my-link" maxlength="30" autocomplete="off">
+        </label>
+      </div>
+
+      <p class="error-msg" id="error-msg" role="alert"></p>
+    </form>
+
+    <div class="result" id="result">
+      <p class="result-label">Your short link</p>
+      <div class="result-pill-row">
+        <div class="result-pill" id="result-pill"></div>
+        <div class="result-actions">
+          <button type="button" class="icon-btn" id="copy-btn">Copy</button>
+          <a class="icon-btn" id="open-btn" href="#" target="_blank" rel="noopener">Open</a>
+        </div>
+      </div>
+      <p class="result-source" id="result-source"></p>
+    </div>
+
+    <section class="history">
+      <div class="history-head">
+        <h2>Your links this session</h2>
+        <div>
+          <button type="button" id="refresh-clicks">Refresh clicks</button>
+          <button type="button" id="clear-history">Clear</button>
+        </div>
+      </div>
+      <div class="history-empty shown" id="history-empty">No links yet — shrink your first one above.</div>
+      <div id="history-list"></div>
+    </section>
+
+    <footer class="site-footer">
+      Piku is a free link shortener open to anyone with the link. Don't rely on it for anything sensitive.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('alias-prefix').textContent = location.host + '/';
+  </script>
+  <script src="/assets/script.js"></script>
+</body>
+</html>

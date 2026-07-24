@@ -1,0 +1,10 @@
+{
+  "name": "piku-url-shortener",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Piku - a simple, shareable URL shortener with custom aliases, deployed on Netlify.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
